@@ -41,8 +41,8 @@ function App() {
             className="p-2 rounded text-white"
           />
           <div>
-            <p className="mt-2"> or </p>
-            <input type="file" className="mt-2" />
+            <p className="font-bold"> OR </p>
+            <input type="file" className="mt-2 rounded-2xl border-2 py-2 border-cyan-900 bg-cyan-700" />
           </div>
           <button
             className="mt-4 bg-green-700 px-4 py-2 rounded"
@@ -55,8 +55,8 @@ function App() {
 
       {view === "recommend" && isNewFarmer === null && (
         <div className="space-y-4 justify-center">
-          <h2 className="text-xl font-semibold">Crop Recommendation</h2>
-          <p>Are you new to farming?</p>
+          <h1 className="text-4xl font-semibold">Crop Recommendation</h1>
+          <h2>Are you new to farming?</h2>
           <div className="flex gap-4 justify-center">
             <button
               onClick={() => setIsNewFarmer(true)}
@@ -75,21 +75,23 @@ function App() {
       )}
 
       {isNewFarmer === true && view === "recommend" && (
-        <div className="space-y-4">
+        <div className="space-y-12">
           <h2>New Farmer Input</h2>
+          <div className="flex gap-5 justify-center">
           <input
             type="text"
             placeholder="Enter region"
-            className="p-2 rounded text-white"
+            className="p-2 text-white border-cyan-400 border-2 rounded-2xl"
           />
           <input
             type="text"
             placeholder="Enter soil quality"
-            className="p-2 rounded text-white"
+            className="p-2 text-white border-cyan-400 border-2 rounded-2xl"
           />
           <button className="bg-green-700 px-4 py-2 rounded mt-2">
             Get Crop Recommendation
           </button>
+        </div>
         </div>
       )}
 
