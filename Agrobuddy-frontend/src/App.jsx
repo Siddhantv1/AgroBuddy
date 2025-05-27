@@ -1,30 +1,30 @@
 import { useState } from 'react'
 import './App.css'
+import './index.css'
 
 function App() {
   const [view, setView] = useState("home");
   const [isNewFarmer, setIsNewFarmer] = useState(null);
 
   return (
-    <div className="min-h-screen bg-black-900 text-white p-4 flex flex-col">
+    <div className="min-h-screen bg-gray-900 text-white p-4 flex flex-col">
       <header className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">AgroBuddy</h1>
-        <button className="bg-green-700 px-3 py-1 rounded">Change Language</button>
+        <button className="bg-gray-600 px-3 py-1 rounded">Change Language</button>
       </header>
 
       {view === "home" && (
-        <div className="space-y-4">
-          <p>Welcome to AgroBuddy. Choose what you'd like to do:</p>
-          <div className="flex gap-4">
+        <div className="space-y-12 ">
+          <p className="text-3xl">Welcome to AgroBuddy. Choose your task:</p>
+          <div className="flex gap-4 justify-center">
             <button
               onClick={() => setView("recommend")}
-              className="bg-blue-600 px-4 py-2 rounded"
+              className="bg-blue-800 px-4 py-2 rounded-3xl"
             >
               Crop Recommend
             </button>
-            <button
+            <button className="bg-red-800 px-4 py-2 rounded-4xl"
               onClick={() => setView("disease")}
-              className="bg-red-600 px-4 py-2 rounded"
             >
               Disease Detect
             </button>
@@ -38,10 +38,10 @@ function App() {
           <input
             type="text"
             placeholder="Enter crop name"
-            className="p-2 rounded text-black"
+            className="p-2 rounded text-white"
           />
           <div>
-            <p className="mt-2">or</p>
+            <p className="mt-2"> or </p>
             <input type="file" className="mt-2" />
           </div>
           <button
@@ -54,13 +54,13 @@ function App() {
       )}
 
       {view === "recommend" && isNewFarmer === null && (
-        <div className="space-y-4">
+        <div className="space-y-4 justify-center">
           <h2 className="text-xl font-semibold">Crop Recommendation</h2>
           <p>Are you new to farming?</p>
-          <div className="flex gap-4">
+          <div className="flex gap-4 justify-center">
             <button
               onClick={() => setIsNewFarmer(true)}
-              className="bg-purple-600 px-4 py-2 rounded"
+              className="bg-purple-900 px-4 py-2 rounded"
             >
               I'm New
             </button>
@@ -80,12 +80,12 @@ function App() {
           <input
             type="text"
             placeholder="Enter region"
-            className="p-2 rounded text-black"
+            className="p-2 rounded text-white"
           />
           <input
             type="text"
             placeholder="Enter soil quality"
-            className="p-2 rounded text-black"
+            className="p-2 rounded text-white"
           />
           <button className="bg-green-700 px-4 py-2 rounded mt-2">
             Get Crop Recommendation
@@ -99,22 +99,22 @@ function App() {
           <input
             type="number"
             placeholder="Nitrogen level"
-            className="p-2 rounded text-black"
+            className="p-2 rounded text-white"
           />
           <input
             type="number"
             placeholder="Phosphorus level"
-            className="p-2 rounded text-black"
+            className="p-2 rounded text-white"
           />
           <input
             type="number"
             placeholder="Potassium level"
-            className="p-2 rounded text-black"
+            className="p-2 rounded text-white"
           />
           <input
             type="number"
             placeholder="pH value"
-            className="p-2 rounded text-black"
+            className="p-2 rounded text-white"
           />
           <button className="bg-green-700 px-4 py-2 rounded mt-2">
             Get Crop Recommendation
