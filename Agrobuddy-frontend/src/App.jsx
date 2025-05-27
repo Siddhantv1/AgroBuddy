@@ -2,15 +2,126 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const [view, setView] = useState("home");
+  const [isNewFarmer, setIsNewFarmer] = useState(null);
 
   return (
-    <>
-      <div>
-        <h1>AgroBuddy.</h1>
-      </div>
-    </>
-  )
-}
+    <div className="min-h-screen bg-black-900 text-white p-4 flex flex-col">
+      <header className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">AgroBuddy</h1>
+        <button className="bg-green-700 px-3 py-1 rounded">Change Language</button>
+      </header>
 
+      {view === "home" && (
+        <div className="space-y-4">
+          <p>Welcome to AgroBuddy. Choose what you'd like to do:</p>
+          <div className="flex gap-4">
+            <button
+              onClick={() => setView("recommend")}
+              className="bg-blue-600 px-4 py-2 rounded"
+            >
+              Crop Recommend
+            </button>
+            <button
+              onClick={() => setView("disease")}
+              className="bg-red-600 px-4 py-2 rounded"
+            >
+              Disease Detect
+            </button>
+          </div>
+        </div>
+      )}
+
+      {view === "disease" && (
+        <div className="space-y-4">
+          <h2 className="text-xl font-semibold">Disease Detection</h2>
+          <input
+            type="text"
+            placeholder="Enter crop name"
+            className="p-2 rounded text-black"
+          />
+          <div>
+            <p className="mt-2">or</p>
+            <input type="file" className="mt-2" />
+          </div>
+          <button
+            className="mt-4 bg-green-700 px-4 py-2 rounded"
+            onClick={() => alert("Show disease info")}
+          >
+            Check Diseases
+          </button>
+        </div>
+      )}
+
+      {view === "recommend" && isNewFarmer === null && (
+        <div className="space-y-4">
+          <h2 className="text-xl font-semibold">Crop Recommendation</h2>
+          <p>Are you new to farming?</p>
+          <div className="flex gap-4">
+            <button
+              onClick={() => setIsNewFarmer(true)}
+              className="bg-purple-600 px-4 py-2 rounded"
+            >
+              I'm New
+            </button>
+            <button
+              onClick={() => setIsNewFarmer(false)}
+              className="bg-yellow-600 px-4 py-2 rounded"
+            >
+              I'm Experienced
+            </button>
+          </div>
+        </div>
+      )}
+
+      {isNewFarmer === true && view === "recommend" && (
+        <div className="space-y-4">
+          <h2>New Farmer Input</h2>
+          <input
+            type="text"
+            placeholder="Enter region"
+            className="p-2 rounded text-black"
+          />
+          <input
+            type="text"
+            placeholder="Enter soil quality"
+            className="p-2 rounded text-black"
+          />
+          <button className="bg-green-700 px-4 py-2 rounded mt-2">
+            Get Crop Recommendation
+          </button>
+        </div>
+      )}
+
+      {isNewFarmer === false && view === "recommend" && (
+        <div className="space-y-4">
+          <h2>Experienced Farmer Input</h2>
+          <input
+            type="number"
+            placeholder="Nitrogen level"
+            className="p-2 rounded text-black"
+          />
+          <input
+            type="number"
+            placeholder="Phosphorus level"
+            className="p-2 rounded text-black"
+          />
+          <input
+            type="number"
+            placeholder="Potassium level"
+            className="p-2 rounded text-black"
+          />
+          <input
+            type="number"
+            placeholder="pH value"
+            className="p-2 rounded text-black"
+          />
+          <button className="bg-green-700 px-4 py-2 rounded mt-2">
+            Get Crop Recommendation
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
 export default App
