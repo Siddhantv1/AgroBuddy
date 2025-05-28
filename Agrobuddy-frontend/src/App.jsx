@@ -1,16 +1,66 @@
 import { useState } from 'react'
 import './App.css'
 import './index.css'
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 function App() {
   const [view, setView] = useState("home");
   const [isNewFarmer, setIsNewFarmer] = useState(null);
+  const [selectedLanguage, setSelectedLanguage] = useState('English');
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4 flex flex-col">
       <header className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">AgroBuddy</h1>
-        <button className="bg-gray-600 px-3 py-1 rounded">Change Language</button>
+        <Menu as="div" className="relative inline-block text-left">
+  <div>
+    <MenuButton className="bg-gray-600 px-3 py-1 rounded flex items-center gap-2">
+      {selectedLanguage}
+      <ChevronDownIcon aria-hidden="true" className="size-5 text-white" />
+    </MenuButton>
+  </div>
+
+  <MenuItems
+    transition
+    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
+  >
+    <div className="py-1">
+      <MenuItem>
+        <button 
+          onClick={() => setSelectedLanguage('English')}
+          className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+        >
+          English
+        </button>
+      </MenuItem>
+      <MenuItem>
+        <button 
+          onClick={() => setSelectedLanguage('हिन्दी')}
+          className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+        >
+          हिन्दी
+        </button>
+      </MenuItem>
+      <MenuItem>
+        <button 
+          onClick={() => setSelectedLanguage('ਪੰਜਾਬੀ')}
+          className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+        >
+          ਪੰਜਾਬੀ
+        </button>
+        </MenuItem>
+        <MenuItem>
+        <button 
+          onClick={() => setSelectedLanguage('ಕನ್ನಡ')}
+          className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+        >
+          ಕನ್ನಡ
+        </button>
+      </MenuItem>
+    </div>
+  </MenuItems>
+</Menu>
       </header>
 
       {view === "home" && (
