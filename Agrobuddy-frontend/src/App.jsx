@@ -14,53 +14,46 @@ function App() {
       <header className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">AgroBuddy</h1>
         <Menu as="div" className="relative inline-block text-left">
-  <div>
-    <MenuButton className="bg-gray-600 px-3 py-1 rounded flex items-center gap-2">
-      {selectedLanguage}
-      <ChevronDownIcon aria-hidden="true" className="size-5 text-white" />
-    </MenuButton>
-  </div>
+          <MenuButton className="inline-flex items-center gap-2 rounded-md bg-gray-800 px-3 py-1.5 text-sm font-semibold text-white shadow-inner shadow-white/10 focus:outline-none hover:bg-gray-700">
+            {selectedLanguage}
+            <ChevronDownIcon className="size-4 fill-white/60" />
+          </MenuButton>
 
-  <MenuItems
-    transition
-    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none"
-  >
-    <div className="py-1">
-      <MenuItem>
-        <button 
-          onClick={() => setSelectedLanguage('English')}
-          className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-        >
-          English
-        </button>
-      </MenuItem>
-      <MenuItem>
-        <button 
-          onClick={() => setSelectedLanguage('हिन्दी')}
-          className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-        >
-          हिन्दी
-        </button>
-      </MenuItem>
-      <MenuItem>
-        <button 
-          onClick={() => setSelectedLanguage('ਪੰਜਾਬੀ')}
-          className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-        >
-          ਪੰਜਾਬੀ
-        </button>
-        </MenuItem>
-        <MenuItem>
-        <button 
-          onClick={() => setSelectedLanguage('ಕನ್ನಡ')}
-          className="block px-4 py-2 text-sm font-bold text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-        >
-          ಕನ್ನಡ
-        </button>
-      </MenuItem>
-    </div>
-  </MenuItems>
-</Menu>
+          <MenuItems className="absolute right-0 z-10 mt-2 w-52 origin-top-right rounded-xl border border-white/5 bg-white/5 p-1 text-sm text-white transition duration-100 ease-out scale-100 opacity-100 focus:outline-none">
+            <MenuItem>
+              <button
+                onClick={() => setSelectedLanguage('English')}
+                className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 hover:bg-white/10"
+              >
+                English
+              </button>
+            </MenuItem>
+            <MenuItem>
+              <button
+                onClick={() => setSelectedLanguage('हिन्दी')}
+                className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 hover:bg-white/10"
+              >
+                हिन्दी
+              </button>
+            </MenuItem>
+            <MenuItem>
+              <button
+                onClick={() => setSelectedLanguage('ਪੰਜਾਬੀ')}
+                className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 hover:bg-white/10"
+              >
+                ਪੰਜਾਬੀ
+              </button>
+            </MenuItem>
+            <MenuItem>
+              <button
+                onClick={() => setSelectedLanguage('ಕನ್ನಡ')}
+                className="group flex w-full items-center gap-2 rounded-lg px-3 py-1.5 hover:bg-white/10"
+              >
+                ಕನ್ನಡ
+              </button>
+            </MenuItem>
+          </MenuItems>
+        </Menu>
       </header>
 
       {view === "home" && (
