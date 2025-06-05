@@ -128,7 +128,7 @@ function App() {
           />
           <input
             type="text"
-            placeholder="Enter soil quality"
+            placeholder="Enter soil type"
             className="p-2 text-white border-cyan-400 border-2 rounded-2xl"
           />
           <button className="bg-green-700 px-4 py-2 rounded mt-2">
