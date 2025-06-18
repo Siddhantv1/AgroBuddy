@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import './App.css'
 import './index.css'
@@ -61,7 +62,10 @@ function App() {
           <p className="text-3xl">Welcome to AgroBuddy. Choose your task:</p>
           <div className="flex gap-4 justify-center">
             <button
-              onClick={() => setView("recommend")}
+              onClick={() => {
+                setView("recommend");
+                setIsNewFarmer(false);
+              }}
               className="bg-blue-800 px-4 py-2 rounded-3xl"
             >
               Crop Recommend
@@ -96,45 +100,24 @@ function App() {
         </div>
       )}
 
-      {view === "recommend" && isNewFarmer === null && (
-        <div className="space-y-4 justify-center">
-          <h1 className="text-4xl font-semibold">Crop Recommendation</h1>
-          <h2>Are you new to farming?</h2>
-          <div className="flex gap-4 justify-center">
-            <button
-              onClick={() => setIsNewFarmer(true)}
-              className="bg-purple-900 px-4 py-2 rounded"
-            >
-              I'm New
-            </button>
-            <button
-              onClick={() => setIsNewFarmer(false)}
-              className="bg-yellow-600 px-4 py-2 rounded"
-            >
-              I'm Experienced
-            </button>
-          </div>
-        </div>
-      )}
-
       {isNewFarmer === true && view === "recommend" && (
         <div className="space-y-12">
           <h2>New Farmer Input</h2>
           <div className="flex gap-5 justify-center">
-          <input
-            type="text"
-            placeholder="Enter region"
-            className="p-2 text-white border-cyan-400 border-2 rounded-2xl"
-          />
-          <input
-            type="text"
-            placeholder="Enter soil type"
-            className="p-2 text-white border-cyan-400 border-2 rounded-2xl"
-          />
-          <button className="bg-green-700 px-4 py-2 rounded mt-2">
-            Get Crop Recommendation
-          </button>
-        </div>
+            <input
+              type="text"
+              placeholder="Enter region"
+              className="p-2 text-white border-cyan-400 border-2 rounded-2xl"
+            />
+            <input
+              type="text"
+              placeholder="Enter soil type"
+              className="p-2 text-white border-cyan-400 border-2 rounded-2xl"
+            />
+            <button className="bg-green-700 px-4 py-2 rounded mt-2">
+              Get Crop Recommendation
+            </button>
+          </div>
         </div>
       )}
 
@@ -159,6 +142,17 @@ function App() {
           <input
             type="number"
             placeholder="pH value"
+            className="p-2 rounded text-white"
+          />
+          <input
+            type="number"
+            placeholder="Rainfall"
+            className="p-2 rounded text-white"
+          />
+          <br></br>
+          <input
+            type="number"
+            placeholder="Humidity"
             className="p-2 rounded text-white"
           />
           <button className="bg-green-700 px-4 py-2 rounded mt-2">
