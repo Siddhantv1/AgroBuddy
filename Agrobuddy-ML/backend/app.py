@@ -5,15 +5,16 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from PIL import Image
 import io
-
+import os
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
 
 # --- Crop Recommendation Model ---
 # Load the trained model
+model_path = os.environ.get('CROP_MODEL_PATH', os.path.join(os.path.dirname(__file__), '../models/RandomForest.pkl'))
 try:
-    crop_model = pickle.load(open('D:/Projects/AgroBuddy/Agrobuddy-ML/models/RandomForest.pkl', 'rb'))
+    crop_model = pickle.load(open(model_path, 'rb'))
 except Exception as e:
     print(f"Error loading crop model: {e}")
     crop_model = None
