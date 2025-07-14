@@ -1,3 +1,4 @@
 {
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "tailwindCSS.experimental.configFile": "Agrobuddy-frontend/src/index.css"
 }
