@@ -65,13 +65,13 @@ const Disease = () => {
               ) : (
                 <div className="flex flex-col items-center space-y-2">
                   <img src={URL.createObjectURL(diseaseFile)} alt="Uploaded" className="w-32 h-32 object-cover rounded-xl border border-white/30 mb-2" />
-                  <span className="text-green-400 font-semibold">Image uploaded successfully!</span>
+                  <span className="text-green-400 font-semibold">Image uploaded.</span>
                   <button
                     type="button"
                     className="mt-2 px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all"
                     onClick={() => setDiseaseFile(null)}
                   >
-                    Delete & Retry
+                    Delete
                   </button>
                 </div>
               )}
