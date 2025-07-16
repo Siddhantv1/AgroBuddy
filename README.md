@@ -4,4 +4,4 @@ Reasearch Project on Crop Recommendation and Disease Detection using Machine Lea
 ### Tech Stack
 Frontend: React Vite + Tailwind CSS
 
-ML Model: Python, Scikitlearn, Tensorflow
+Backend: Python Flask, Flask-API
