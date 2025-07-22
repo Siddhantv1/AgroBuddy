@@ -6,9 +6,41 @@ from flask_cors import CORS
 from PIL import Image
 import io
 import os
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()  # Load .env on startup
+
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
+
+# --- Mandi Prices ---
+API_KEY = os.getenv("CROPS_API")
+BASE_URL = "https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070"
+
+@app.route("/mandi-prices", methods=["GET"])
+def mandi_prices():
+    if not API_KEY:
+        return jsonify({"error": "Missing CROPS_API environment variable"}), 500
+
+    params = {
+        "api-key": API_KEY,
+        "format": "json",
+        "limit": request.args.get("limit", 100)
+    }
+    if c := request.args.get("commodity"):
+        params["commodity"] = c
+    if m := request.args.get("market"):
+        params["market"] = m
+    if s := request.args.get("state"):
+        params["filters[state]"] = s
+
+    resp = requests.get(BASE_URL, params=params)
+    if resp.status_code != 200:
+        return jsonify({"error": "Failed to fetch data", "status": resp.status_code}), resp.status_code
+    return jsonify(resp.json())
+
 
 # --- Crop Recommendation Model ---
 # Load the trained model
