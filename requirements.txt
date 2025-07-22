@@ -4,5 +4,5 @@ numpy
 tensorflow
 scikit-learn
 Pillow
-flask-requests
+requests
 python-dotenv
