@@ -1,0 +1,39 @@
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: rgb(17, 26, 22);
+    border: 1px solid #009037;
+    box-shadow: 0 2px 10px rgba(35, 254, 86, 0.1);
+    margin-top: 0px;
+}
+
+.marquee-text {
+    display: inline-block;
+    white-space: nowrap;
+    color: white;
+    background: transparent;
+    padding-left: 100%;
+    animation: marquee 100s linear infinite;
+}
+
+.marquee-text span {
+    margin-right: 50px;
+    font-size: 1.2em;
+    color:lime;
+}
+.marquee-text croper{
+    font-weight:bold;
+    color: white;
+}
+.marquee-text mandi {
+    color: white;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
