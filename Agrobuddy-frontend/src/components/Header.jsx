@@ -48,7 +48,7 @@ const Header = ({ selectedLanguage, handleLanguageChange, selectedState, setSele
                 <ChevronDownIcon className="size-4 fill-white/60" />
               </MenuButton>
 
-              <MenuItems className="absolute right-0 z-10 mt-2 w-52 max-h-60 overflow-y-auto origin-top-right rounded-xl border border-white/20 bg-black/10 backdrop-blur-3xl p-1 text-sm text-white shadow-xl">
+              <MenuItems className="absolute right-0 z-10 mt-2 w-52 max-h-60 overflow-y-auto origin-top-right rounded-xl border border-white/20 bg-gray-700 p-1 text-sm text-white shadow-xl">
                 {STATES.map((state) => (
                   <MenuItem key={state}>
                     {({ focus }) => (
@@ -73,7 +73,7 @@ const Header = ({ selectedLanguage, handleLanguageChange, selectedState, setSele
                 <ChevronDownIcon className="size-4 fill-white/60" />
               </MenuButton>
 
-              <MenuItems className="absolute right-0 z-10 mt-2 w-52 max-h-60 overflow-y-auto origin-top-right rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-1 text-sm text-white shadow-xl">
+              <MenuItems className="absolute right-0 z-10 mt-2 w-52 max-h-60 overflow-y-auto origin-top-right rounded-xl border border-white/20 bg-gray-600 p-1 text-sm text-white shadow-xl">
                 {LANGUAGES.map((language) => (
                   <MenuItem key={language.value}>
                     {({ focus }) => (
