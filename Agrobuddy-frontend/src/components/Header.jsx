@@ -7,6 +7,10 @@ const LANGUAGES = [
   { label: "हिन्दी", value: "hi-IN", emoji: "🇮🇳" },
   { label: "ਪੰਜਾਬੀ", value: "pa-IN", emoji: "🇮🇳" },
   { label: "ಕನ್ನಡ", value: "kn-IN", emoji: "🇮🇳" },
+  { label: "বাংলা", value: "bn-IN", emoji: "🇮🇳" },
+  { label: "ગુજરાતી", value: "gu-IN", emoji: "🇮🇳" },
+  {label: "मराठी", value: "mr-IN", emoji: "🇮🇳" },
+  { label: "മലയാളം", value: "ml-IN", emoji: "🇮🇳" },
 ];
 
 const STATES = [
@@ -69,7 +73,7 @@ const Header = ({ selectedLanguage, handleLanguageChange, selectedState, setSele
                 <ChevronDownIcon className="size-4 fill-white/60" />
               </MenuButton>
 
-              <MenuItems className="absolute right-0 z-10 mt-2 w-52 origin-top-right rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-1 text-sm text-white shadow-xl">
+              <MenuItems className="absolute right-0 z-10 mt-2 w-52 max-h-60 overflow-y-auto origin-top-right rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-1 text-sm text-white shadow-xl">
                 {LANGUAGES.map((language) => (
                   <MenuItem key={language.value}>
                     {({ focus }) => (
