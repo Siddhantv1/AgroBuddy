@@ -3,14 +3,14 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const LANGUAGES = [
-  { label: "English", value: "en-US", emoji: "🇺🇸" },
-  { label: "हिन्दी", value: "hi-IN", emoji: "🇮🇳" },
-  { label: "ਪੰਜਾਬੀ", value: "pa-IN", emoji: "🇮🇳" },
-  { label: "ಕನ್ನಡ", value: "kn-IN", emoji: "🇮🇳" },
-  { label: "বাংলা", value: "bn-IN", emoji: "🇮🇳" },
-  { label: "ગુજરાતી", value: "gu-IN", emoji: "🇮🇳" },
-  {label: "मराठी", value: "mr-IN", emoji: "🇮🇳" },
-  { label: "മലയാളം", value: "ml-IN", emoji: "🇮🇳" },
+  { label: "English", value: "en-US" },
+  { label: "हिन्दी", value: "hi-IN" },
+  { label: "ਪੰਜਾਬੀ", value: "pa-IN" },
+  { label: "ಕನ್ನಡ", value: "kn-IN" },
+  { label: "বাংলা", value: "bn-IN" },
+  { label: "ગુજરાતી", value: "gu-IN" },
+  {label: "मराठी", value: "mr-IN" },
+  { label: "മലയാളം", value: "ml-IN" },
 ];
 
 const STATES = [
@@ -83,7 +83,7 @@ const Header = ({ selectedLanguage, handleLanguageChange, selectedState, setSele
                           focus ? "bg-white/20" : ""
                         }`}
                       >
-                        {language.emoji} {language.label}
+                        {language.label}
                       </button>
                     )}
                   </MenuItem>
