@@ -94,9 +94,45 @@ def predict_disease():
         prediction = disease_model.predict(input_arr)
         result_index = np.argmax(prediction[0])
         predicted_class = class_name[result_index]
+        diseasename = predicted_class.replace('_', ' ')
 
-        return jsonify({'disease': predicted_class})
+        return jsonify({'disease': diseasename})
     return jsonify({'error': 'Disease prediction model is not loaded or file is invalid.'}), 500
+
+
+# --- Text Translation ---
+@app.route('/translate', methods=['POST'])
+def translate_text():
+    data = request.get_json()
+    text_to_translate = data.get('text')
+    target_language = data.get('target_language', 'hi-IN')  # Hindi Default
+
+    if not text_to_translate:
+        return jsonify({'error': 'No text provided for translation'}), 400
+
+    sarvam_api_key = os.getenv("SARVAM_API_KEY")
+    if not sarvam_api_key or sarvam_api_key == 'YOUR_SARVAM_API_KEY':
+        return jsonify({'error': 'Sarvam API key is not configured'}), 500
+
+    try:
+        response = requests.post(
+            'https://api.sarvam.ai/translate',
+            headers={
+                'Content-Type': 'application/json',
+                'api-subscription-key': sarvam_api_key
+            },
+            json={
+                'input': text_to_translate,
+                'source_language_code': 'auto',
+                'target_language_code': target_language
+            }
+        )
+        response.raise_for_status()  # Raise an exception for bad status codes
+        translated_text = response.json().get('translated_text')
+        return jsonify({'translated_text': translated_text})
+
+    except requests.exceptions.RequestException as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
