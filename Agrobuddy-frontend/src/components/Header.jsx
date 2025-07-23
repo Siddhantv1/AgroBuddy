@@ -3,10 +3,10 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const LANGUAGES = [
-  { label: "English", value: "English", emoji: "🇺🇸" },
-  { label: "हिन्दी", value: "हिन्दी", emoji: "🇮🇳" },
-  { label: "ਪੰਜਾਬੀ", value: "ਪੰਜਾਬੀ", emoji: "🇮🇳" },
-  { label: "ಕನ್ನಡ", value: "ಕನ್ನಡ", emoji: "🇮🇳" },
+  { label: "English", value: "en-US", emoji: "🇺🇸" },
+  { label: "हिन्दी", value: "hi-IN", emoji: "🇮🇳" },
+  { label: "ਪੰਜਾਬੀ", value: "pa-IN", emoji: "🇮🇳" },
+  { label: "ಕನ್ನಡ", value: "kn-IN", emoji: "🇮🇳" },
 ];
 
 const STATES = [
@@ -17,7 +17,7 @@ const STATES = [
   "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"
 ];
 
-const Header = ({ selectedLanguage, setSelectedLanguage, selectedState, setSelectedState }) => {
+const Header = ({ selectedLanguage, handleLanguageChange, selectedState, setSelectedState }) => {
   return (
     <header className="bg-white/10 backdrop-blur-md border-b border-white/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,31 +62,31 @@ const Header = ({ selectedLanguage, setSelectedLanguage, selectedState, setSelec
               </MenuItems>
             </Menu>
 
-  {/* Language Selector */}
-  <Menu as="div" className="relative inline-block text-left">
-    <MenuButton className="inline-flex items-center gap-2 rounded-xl bg-white/10 backdrop-blur-md px-4 py-2 text-sm font-semibold text-white shadow-lg border border-white/20 hover:bg-white/20 transition-all duration-200">
-      {selectedLanguage}
-      <ChevronDownIcon className="size-4 fill-white/60" />
-    </MenuButton>
+            {/* Language Selector */}
+            <Menu as="div" className="relative inline-block text-left">
+              <MenuButton className="inline-flex items-center gap-2 rounded-xl bg-white/10 backdrop-blur-md px-4 py-2 text-sm font-semibold text-white shadow-lg border border-white/20 hover:bg-white/20 transition-all duration-200">
+                {selectedLanguage}
+                <ChevronDownIcon className="size-4 fill-white/60" />
+              </MenuButton>
 
-    <MenuItems className="absolute right-0 z-10 mt-2 w-52 origin-top-right rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-1 text-sm text-white shadow-xl">
-      {LANGUAGES.map(({ label, value, emoji }) => (
-        <MenuItem key={value}>
-          {({ focus }) => (
-            <button
-              onClick={() => setSelectedLanguage(value)}
-              className={`group flex w-full items-center gap-2 rounded-lg px-3 py-2 transition-colors ${
-                focus ? "bg-white/20" : ""
-              }`}
-            >
-              {emoji} {label}
-            </button>
-          )}
-        </MenuItem>
-      ))}
-    </MenuItems>
-  </Menu>
-</div>
+              <MenuItems className="absolute right-0 z-10 mt-2 w-52 origin-top-right rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-1 text-sm text-white shadow-xl">
+                {LANGUAGES.map((language) => (
+                  <MenuItem key={language.value}>
+                    {({ focus }) => (
+                      <button
+                        onClick={() => handleLanguageChange(language)}
+                        className={`group flex w-full items-center gap-2 rounded-lg px-3 py-2 transition-colors ${
+                          focus ? "bg-white/20" : ""
+                        }`}
+                      >
+                        {language.emoji} {language.label}
+                      </button>
+                    )}
+                  </MenuItem>
+                ))}
+              </MenuItems>
+            </Menu>
+          </div>
 
         </div>
       </div>
